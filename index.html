@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Todo 2.0</title>
-    <style>
-      body {
-        background: linear-gradient(120deg, pink, purple);
-      }
-    </style>
   </head>
 
   <body class="min-h-screen flex items-center justify-center p-6">
@@ -22,7 +23,7 @@
       <h1 class="text-3xl font-bold mb-6">Todo 2.0</h1>
 
       <!-- Input form -->
-      <div class="flex items-center gap-4 mb-10">
+      <div id="theForm" class="flex items-center gap-4 mb-10">
         <input
           id="input"
           type="text"
@@ -32,17 +33,19 @@
         <button
           id="add-item"
           class="bg-purple-400 hover:bg-purple-500 font-medium px-10 py-4 rounded-full"
+          onclick="addItem()"
         >
           Add
         </button>
       </div>
       <!-- Fillters -->
-      <div class="flex items-center gap-4 text-lg mb-8">
-        <span id="counter" class="font-bold">Total: 1</span>
+      <div class="flex justify-between items-center gap-4 text-lg mb-8">
+        <span id="count" class="font-bold">Total: 1</span>
 
         <button
           id="all"
           class="bg-pink-200/70 hover:bg-pink-300 px-4 py-1 rounded-full"
+          onclick="showAll()"
         >
           All
         </button>
@@ -50,6 +53,7 @@
         <button
           id="unfinished"
           class="bg-pink-200/70 hover:bg-pink-300 px-4 py-1 rounded-full"
+          onclick="showUnclicked()"
         >
           Unfinished
         </button>
@@ -57,6 +61,7 @@
         <button
           id="completed"
           class="bg-pink-200/70 hover:bg-pink-300 px-4 py-1 rounded-full"
+          onclick="showClicked() "
         >
           Completed
         </button>
@@ -64,6 +69,7 @@
         <button
           id="clear"
           class="bg-pink-200/70 hover:bg-pink-300 px-4 py-1 rounded-full"
+          onclick="clearAll()"
         >
           Clear all
         </button>
